@@ -16,19 +16,17 @@ def fsm(graph, A, B, input_string):
         if symbol not in A:
             raise ValueError(f"Символ '{symbol}' не принадлежит входному алфавиту A.")
         
-        # Проверяем наличие перехода для текущего состояния и входного символа
         if state not in graph or symbol not in graph[state]:
             raise ValueError(f"Нет перехода из состояния '{state}' с символом '{symbol}'.")
         
-        # Получаем следующее состояние и выходной символ
         next_state, output_symbol = graph[state][symbol]
         
         if output_symbol not in B:
             raise ValueError(f"Выходной символ '{output_symbol}' не принадлежит алфавиту B.")
         
-        # Добавляем выходной символ в результат
+
         output.append(output_symbol)
-        # Переход в следующее состояние
+     
         state = next_state
     
     return ''.join(output)
@@ -36,7 +34,6 @@ def fsm(graph, A, B, input_string):
 
 # Пример использования:
 if __name__ == "__main__":
-    # Список смежности для автомата
     graph = {
         "start": {"a": ("q1", "x"), "b": ("q2", "y")},
         "q1": {"a": ("q1", "z"), "b": ("q2", "x")},
