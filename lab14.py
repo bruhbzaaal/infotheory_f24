@@ -11,7 +11,7 @@ def turing_machine(input_string):
     head = 0  # Положение головки
     state = "q0"  # Начальное состояние
 
-    while state != "halt":
+  while (state != "halt_even") and (state != "halt_odd"):
         if state == "q0":
             if tape[head] == "1":
                 tape[head] = "X"  # Помечаем единицу
